@@ -1,11 +1,9 @@
 #!/bin/bash
 
-#HOST=localhost
-HOST=mysql.sourceforge.net
+HOST=localhost
 
-#USER=root
-USER=ac4ngos
+USER=root
 
-PASS="--password=accrp"
+#PASS="--password="
 
 
