@@ -14,21 +14,28 @@
 #	- create_accrp_db.sql
 #	- create_accrp_tables.sql
 #	- load_accrp_datadump.sql
+HOST=localhost
+#HOST=mysql.sourceforge.net
+
+USER=root
+#USER=ac4ngos
+
+
 
 echo -n creating accrp-database ... 
-mysql -u root < create_accrp_db.sql || exit
+mysql -u $USER -h $HOST < create_accrp_db.sql || exit
 echo done
 echo -n reloading mysql-database ... 
-mysqladmin -u root reload || exit
+mysqladmin -u $USER -h $HOST reload || exit
 echo done
 echo -n creating table-structure ... 
-mysql -u root < create_accrp_tables.sql || exit
+mysql -u $USER -h $HOST < create_accrp_tables.sql || exit
 echo done
 echo -n "creating security System (for PHP access) ..."
-mysql -u root < create_accrp_phpsecurity.sql || exit
+mysql -u $USER -h $HOST < create_accrp_phpsecurity.sql || exit
 echo done
 echo -n Creating some initial Data ... 
-mysql -u root < create_initial_data.sql || exit
+mysql -u $USER -h $HOST < create_initial_data.sql || exit
 echo done
 
 echo "Altering AC_CODE5 Table?(y/n): $REPLY "
@@ -66,7 +73,7 @@ read
 echo "ok: $REPLY "
 if [ $REPLY = y ]; then
 	echo -n Loading Datadump into database ...
-	cat load_accrp_datadump.sql | mysql -u root || exit
+	mysql -u $USER -h $HOST < load_accrp_datadump.sql || exit
 	echo done
 fi
 
