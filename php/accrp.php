@@ -258,7 +258,7 @@ function get_salary_elements_array($fieldname="SAL_AMT",$where_clause="1") {
 	$db = getDBConnection();
 	$result = mysql_query("SELECT * FROM SAL_ID WHERE $where_clause ORDER BY ID_TP DESC", $db);
 	checkMySQLError("get_salary_elements_array");
-	while($row = mysql_fetch_array($result,MYSQL_ASSOC)
+	while($row = mysql_fetch_array($result,MYSQL_ASSOC))
     		$salary_elements_array[$row["SAL_ID"]] = $row["$fieldname"];
 	return $salary_elements_array;
 }
