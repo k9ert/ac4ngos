@@ -1,10 +1,12 @@
 <?
 # enter_personal.php displays a form that allows the entry of a personal and
 # handles the submission
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
+
+pt_register('POST','emp_id3','emp_name','desig_id','status','ac_no','conf_dt','join_dt');
 
 beginDocument("Enter personal", $sess_user);
 

@@ -1,12 +1,14 @@
 <?
-# enter_personal.php displays a form that allows the entry of a personal and
-# handles the submission
-session_start();
-
+# enter_openingbalance.php displays a form that allows the entry of a opening balance
+# All Accounts which have BANK or CASH in their AC3 get listed
 require("accrp.php");
+session_start();
 require("security/secure.php");
 
-beginDocument("Enter personal", $sess_user);
+pt_register('POST','submitnow');
+# others are not needed, they get accessed by $_POST (see line 33)
+
+beginDocument("Enter OpeningBalance", $sess_user);
 
 if ($submitnow==1) {
 	$db = getDBConnection();

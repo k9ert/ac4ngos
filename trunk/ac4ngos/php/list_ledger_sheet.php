@@ -1,9 +1,11 @@
 <?
 # lists all transactions on a specific Account 
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
+
+pt_register('POST','ac_name','startdate','enddate');
 
 beginDocument("list Ledger Sheet", $sess_user);
 

@@ -1,9 +1,11 @@
 <?
 # print_money_receipt displays a money receipt, which could get printed out via the Browsers Print-button
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
+
+pt_register('POST','vr_no');
 
 beginDocument_noHead("Enter Salary Element", $sess_user);
 

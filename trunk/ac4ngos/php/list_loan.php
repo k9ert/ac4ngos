@@ -1,9 +1,8 @@
 <?
 # List Loans of personal
 
-session_start();
-
 require("accrp.php");
+session_start();
 require("security/secure.php");
 
 beginDocument($lCustomerProfile, $sess_user);

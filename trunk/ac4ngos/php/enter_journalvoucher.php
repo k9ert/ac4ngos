@@ -1,11 +1,14 @@
 <?
 # enter_personal.php displays a form that allows the entry of a personal and
 # handles the submission
-session_start();
-
 require("accrp.php");
+session_start();
 require("security/secure.php");
 
+pt_register('POST','ac_count','submitnow','vr_no','t_dt','vr_dt','remarks','credit_sum','debit_sum');
+# We have another problem here with registering:
+# We don't know the names of the other variables :-(
+#TODO: Registering them also
 
 $javascript= <<<EOD
 <script type="text/javascript">

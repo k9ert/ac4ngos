@@ -1,9 +1,11 @@
 <?
 # Idont know, what this is for :-( 
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
+
+pt_register('POST','ac_id1','startdate','enddate');
 
 beginDocument("list project Balance", $sess_user);
 

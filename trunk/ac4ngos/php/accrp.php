@@ -8,6 +8,8 @@ if(!(extension_loaded("mysql"))) {
 	die ("MySQL support not enabled, <b>gcdb</b> cannot run.");
 }
 
+session_save_path($SESSION_PATH);
+
 ###############################################################################
 # DB FUNCTIONS
 ###############################################################################
@@ -730,6 +732,44 @@ function print_project_transactions_head($prj_no,$startdate,$enddate) {
 ###############################################################################
 # MISCELLANEOUS FUNCTIONS
 ###############################################################################
+
+# Registers global variables
+# 
+# This function takes global namespace $HTTP_*_VARS variables from input and if they exist,
+# register them as a global variable so that scripts can use them.  The first argument
+# signifies where to pull the variable names from, and should be one of GET, POST, COOKIE, ENV, or SERVER.
+#
+
+function pt_register()
+{
+	$num_args = func_num_args();
+	$vars = array();
+
+	if ($num_args >= 2) {
+        	$method = strtoupper(func_get_arg(0));
+
+		if (($method != 'SESSION') && ($method != 'GET') && ($method != 'POST') && ($method != 'SERVER') && ($method != 'COOKIE') && ($method != 'ENV')) {
+			die('The first argument of pt_register must be one of the following: GET, POST, SESSION, SERVER, C
+OOKIE, or ENV');
+		}
+
+		$varname = "HTTP_{$method}_VARS";
+		global ${$varname};
+
+		for ($i = 1; $i < $num_args; $i++) {
+			$parameter = func_get_arg($i);
+
+			if (isset(${$varname}[$parameter])) {
+				global $$parameter;
+				$$parameter = ${$varname}[$parameter];
+			}
+		}
+	} else {
+        	die('You must specify at least two arguments');
+	}
+}
+
+
 
 # get_today_srd_string (get today system readable date string)
 #

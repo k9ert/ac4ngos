@@ -1,10 +1,12 @@
 <?
 # This form allows to enter a date. After submitting, all Bank and Cash Account-balances get
 # printed seperated by Projects. 
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
+
+pt_register('POST','date');
 
 beginDocument("list Cash and Bank", $sess_user);
 

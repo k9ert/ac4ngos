@@ -1,10 +1,11 @@
 <?
 # enter_ac5.php displays a form that allows the entry of a AC5 and
 # handles the submission
-session_start();
-
 require("accrp.php");
+session_start();
 require("security/secure.php");
+
+pt_register('POST','ac5_desc','ac_id1','ac_id2','ac_id3','ac_id5');
 
 beginDocument("Enter AC_Code 5", $sess_user);
 
