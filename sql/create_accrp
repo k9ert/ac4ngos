@@ -14,20 +14,16 @@
 #	- create_accrp_db.sql
 #	- create_accrp_tables.sql
 #	- load_accrp_datadump.sql
-HOST=localhost
-#HOST=mysql.sourceforge.net
 
-USER=root
-#USER=ac4ngos
-
-#PASS="--password="
-
-echo -n creating accrp-database ... 
-mysql -u $USER --host=$HOST $PASS < create_accrp_db.sql || exit
-echo done
-echo -n reloading mysql-database ... 
-mysqladmin -u $USER --host=$HOST reload || exit
-echo done
+. ac4ngos_sql-settings
+if [ $USER = "root" ]; then
+	echo -n creating accrp-database ... 
+	mysql -u $USER --host=$HOST $PASS < create_accrp_db.sql || exit
+	echo done
+	echo -n reloading mysql-database ... 
+	mysqladmin -u $USER --host=$HOST reload || exit
+	echo done
+fi
 echo -n creating table-structure ... 
 mysql -u $USER --host=$HOST --database=ac4ngos $PASS < create_accrp_tables.sql || exit
 echo done
