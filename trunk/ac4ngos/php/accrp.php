@@ -1109,8 +1109,8 @@ function beginDocument_noHead ($title, $user,$javascript="") {
 
 function echoDocumentHead() {
 	global $BRAND, $BACKGROUND, $TOPBAR;
-	echo "<table bgcolor='$TOPBAR' width=100%><tr><td width='80%' align='left' class='header'>&nbsp;&nbsp;<a href='http://www.crp-bangladesh.org'><img src='images/CRP.png' height=45 border=0 alt='Home'></a> $BRAND: $user</td><td width='20%' align='right'>";
-	echo "<a href='http://sourceforge.net/tracker/?func=add&group_id=98232&atid=620378 target='_blank'>submit bug</a>";
+	echo "<table bgcolor='$TOPBAR' width=100%><tr><td width='60%' align='left' class='header'>&nbsp;&nbsp;<a href='http://www.crp-bangladesh.org'><img src='images/CRP.png' height=45 border=0 alt='Home'></a> $BRAND: $User</td><td width='20%' align='right'>";
+	echo "<a href='http://sourceforge.net/tracker/?func=add&group_id=98232&atid=620378' target=\"_blank\">submit bug</a></td><td width='20%' align='right'>";
 	if($user != "Not Logged In") {
   	echo "<a href='main.php'><img src='images/home.gif' width=24 height=24 border=0 alt='Home'></a>";
 	}
