@@ -1,0 +1,12 @@
+#!/bin/bash
+. ./ac4ngos_sql-settings
+
+echo User is $USER
+echo HOST is $HOST
+if [ $USER = "root" ]; then 
+	echo "use mysql; delete from user where user=\"crpuser\";" | mysql  -u $USER --host=$HOST --database=ac4ngos $PASS
+	echo "use mysql; delete from db where user= \"crpuser\";" | mysql  -u $USER --host=$HOST --database=ac4ngos $PASS
+fi
+
+mysql  -u $USER --host=$HOST --database=ac4ngos $PASS < drop_all_tables.sql
+echo "drop database ac4ngos;" | mysql  -u $USER --host=$HOST --database=ac4ngos $PASS
