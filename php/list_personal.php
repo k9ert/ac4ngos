@@ -53,7 +53,7 @@ while ($row = mysql_fetch_array($result)) {
 		$row["AC_NO"],
 		$row["CONF_DT"],
 		$row["JOIN_DT"]),
-		"something");
+		"fluct");
 } 
 endPrettyTable();
 endBorderedTable();

@@ -1086,8 +1086,10 @@ function get_HTML_code_string($row) {
 # echos the HTML tags that get the document started, provides a central
 # location for the background color, stylesheets, and whatnot.
 function beginDocument ($title, $user,$javascript="") {
+	global $PRINTFLAG;
 	beginDocument_noHead($title, $user, $javascript);
-	echoDocumentHead();
+	if (!$PRINTFLAG)
+		echoDocumentHead();
 }
 
 # beginDocument_noHead
@@ -1155,7 +1157,7 @@ function endDocument() {
 # handle the creation of a pretty, outlined table.  Uses the supplied
 # bordercolor, bgcolor, colspan (for header) and text (text of header)
 function beginPrettyTable () {
-	global $TABLEBORDER, $INNERTABLE;
+	global $TABLEBORDER, $INNERTABLE, $PRINTFLAG;
 
 	# Allow us to take either 1 or 2 arguments
 	$numargs = func_num_args();
@@ -1171,25 +1173,30 @@ function beginPrettyTable () {
 			$header = $arg_list[$i];
 		}
 	}
-	echo "<table bgcolor='$TABLEBORDER' cellpadding=1 cellspacing=0 border=0>\n";
-	if ($header) {
-		echo " <tr> <td colspan=$colspan align=right><div class='header'>$header&nbsp;</div></td> </tr>\n";
-	}
-	echo " <tr>\n  <td>\n";
-	echo "   <table bgcolor='$INNERTABLE' cellpadding=2 cellspacing=0 border=0>\n";
-	echo "    <tr>\n  <td>\n";
-	echo "      <table bgcolor='$INNERTABLE' cellpadding=2 cellspacing=0 border=0>\n";
+	if (!$PRINTFLAG) {
+		echo "<table bgcolor='$TABLEBORDER' cellpadding=1 cellspacing=0 border=0>\n";
+		if ($header) {
+			echo " <tr> <td colspan=$colspan align=right><div class='header'>$header&nbsp;</div></td> </tr>\n";
+		}
+		echo " <tr>\n  <td>\n";
+		echo "   <table bgcolor='$INNERTABLE' cellpadding=2 cellspacing=0 border=0>\n";
+		echo "    <tr>\n  <td>\n";
+		echo "      <table bgcolor='$INNERTABLE' cellpadding=2 cellspacing=0 border=0>\n";
+	} else echo "<table>";
 }
 
 # endPrettyTable
 #
 # close all tags opened by beginPrettyTable
 function endPrettyTable () {
-	echo "      </table>\n";
-	echo "     </td> </tr>\n";
-	echo "   </table>\n";
-	echo "  </td> </tr>\n";
-	echo "</table>\n";
+	global $PRINTFLAG;
+	if (!$PRINTFLAG) {
+		echo "      </table>\n";
+		echo "     </td> </tr>\n";
+		echo "   </table>\n";
+		echo "  </td> </tr>\n";
+		echo "</table>\n";
+	} else echo "</table>";
 }
 
 # startRow
@@ -1231,6 +1238,7 @@ function endBorderedTable () {
 #
 # take a Array as Parameter and print them in table
 function printRow($array,$type="",$colspan="") {
+	global $PRINTFLAG;
 	# the following if-statement makes it possible, to use the colspan-attribut via
 	# the $colspan argument (it parses the string). An Example for $colspan would be:
 	# "3,2:6,3"
@@ -1245,13 +1253,12 @@ function printRow($array,$type="",$colspan="") {
 	}
 	if(!isset($array)) die ("Array is empty in printRow!");
 	static $class = "odd";
-	if ($type=="") 
+	if ($type=="" || $PRINTFLAG) 
 		echo "<tr>"; 
-	else {
+	else if ($type=="fluct"){
 		if($class == "odd") $class = "even"; else $class = "odd";
 		echo "<tr class=$class>";
-	}
-	#$array = array_unique($array);
+	} else { die("unsupported printRow-type ($type)"); }
 	$counter=1;
 	foreach($array as $key => $value ) {
 		if ($value=="") $value="&nbsp;";
@@ -1358,17 +1365,31 @@ function makeDropBox ($name, $contents, $field, $selectedkey=-1) {
 # makes a submit field
 function makeSubmitter () {
 	echo " <tr> <td colspan=2 align=center>\n";
-	echo "  <input type=image type='submit' value='submit' src='images/submit.gif' border=0 alt='Go!'>";
+	makePlainSubmitter();
 	echo " </td> </tr>\n";
 }
 
-# makeSubmitter
+# makePlainSubmitter
+#
+# makes a Submitter without table
+function makePlainSubmitter() {
+	echo "<input type=image type='submit' value='submit' src='images/submit.gif' border=0 alt='Go!'>";
+}
+
+# makeSpecialSubmitter
 #
 # makes a special-submitter field
-function makeSpecialSubmitter ($value, $onclick="",$colspan=2) {
+function makeSpecialSubmitter ($value, $additions="",$colspan=2) {
 	echo " <tr> <td colspan=$colspan align=center>\n";
-	echo "  <input type='submit' value='$value' border=0 onClick='$onclick'>";
+	makePlainSpecialSubmitter($value,$additions);
 	echo " </td> </tr>\n";
+}
+
+# makePlainSpecialSubmitter
+#
+# makes a special-submitter field without table
+function makePlainSpecialSubmitter ($value, $additions="") {
+	echo "<input type='submit' value='$value' $additions>";
 }
 
 # makeButton

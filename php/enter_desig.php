@@ -13,7 +13,7 @@ if ($desig_desc) {
 	$db = getDBConnection();
 	$result = mysql_query("INSERT INTO DESIG (DESIG_DESC) VALUES ('$desig_desc')", $db);
 	checkMySQLError();
-	mysqlReport($result, $lCustomerAddition, "main.php", "Home");
+	mysqlReport($result, "Designation added", "main.php", "Home");
 	mysql_close($db);
 } else { 
 	

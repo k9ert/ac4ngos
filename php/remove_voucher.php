@@ -31,11 +31,11 @@ if ($remove_confirm==1) {
 	beginPrettyTable("1","Do you want to Remove this Voucher ?");
 	 printRow(array("AC_Codes","VR_TP","Vr_No","VR_DT","PARTY","NARRATION","AMOUNT"),"","1,5");
 	 $row["VR_DT"] = conv_to_hrd($row["VR_DT"]);
-	 printRow($row,"something");
+	 printRow($row,"fluct");
 	 openForm("removevoucher_confirm_form", $PHP_SELF);
 	 makeHiddenField("remove_confirm",0);
 	 makeHiddenField("vr_no",$vr_no);
-	 makeSpecialSubmitter("yes, remove it!","this.form.remove_confirm.value=1",6);
+	 makeSpecialSubmitter("yes, remove it!","onClick='this.form.remove_confirm.value=1'",6);
 
 	endPrettyTable();
 	mysql_close($db);

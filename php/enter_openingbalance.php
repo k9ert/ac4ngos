@@ -57,7 +57,7 @@ if ($submitnow==1) {
 	  foreach ($accounts_array as $ac5 => $desc) {
 		makeTextField("account_field_".$ac5,"",$desc);
 	  }
-	  makeSpecialSubmitter("submit","this.form.submitnow.value=\"1\"");
+	  makeSpecialSubmitter("submit","onClick='this.form.submitnow.value=\"1\"'");
 	closeForm();
 	endPrettyTable();
 }

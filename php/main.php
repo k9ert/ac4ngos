@@ -65,6 +65,12 @@ echo "<b>&nbsp;&nbsp;accrp $version</b>\n";
      <td><hr color='black'></td>
     </tr>
     <tr>
+     <td><a href='enter_personal_salary.php'><?echo "enter personal salary"?></a></td>
+    </tr>
+    <tr>
+     <td><hr color='black'></td>
+    </tr>
+    <tr>
      <td><a href='enter_loan.php?type=PF'><?echo "enter PF-Loan"?></a></td>
     </tr>
     <tr>
@@ -95,7 +101,12 @@ echo "<b>&nbsp;&nbsp;accrp $version</b>\n";
     <tr>
      <td><hr color='black'></td>
     </tr>
-
+    <tr>
+     <td><a href='restore_backup.php'><?echo "Restore Backup"?></a></td>
+    </tr>
+    <tr>
+     <td><hr color='black'></td>
+    </tr>
 
 		<?if($sess_admin == "Yes") {?>
     <tr>

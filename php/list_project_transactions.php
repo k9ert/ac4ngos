@@ -23,7 +23,7 @@ if (isSet($ac_id1)) {
 	printRow(array("", "<b>opening Balance:</b>", "<b>" . $transactions->getOpeningBalance(). "</b>"));
 	printRow(array("Code Number","Description","Amount","VR-Type"));
 	while ($row = $transactions->getNextReceipt()) {
-		printRow($row,"abwechselnd");
+		printRow($row,"fluct");
 	}
 	printRow(array("","<b>total Receipts<b>","<b>" . $transactions->getTotalReceipts() . "</b>"));
 	endPrettyTable();
@@ -37,7 +37,7 @@ if (isSet($ac_id1)) {
 	beginPrettyTable("4", "Payments");
 	printRow(array("Code Number","Description","Amount","VR-Type"));
 	while ($row = $transactions->getNextPayment()) {
-		printRow($row,"abwechselnd");
+		printRow($row,"fluct");
 	}
 	printRow(array("","<b>total Payments</b>","<b>" . $transactions->getTotalPayments() . "</b>"));
 	printRow(array("","<b>closing Balance:</b> ", "<b>" . $transactions->getClosingBalance()."</b>"));
