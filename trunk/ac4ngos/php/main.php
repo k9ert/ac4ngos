@@ -40,7 +40,7 @@ echo "<b>&nbsp;&nbsp;accrp $version</b>\n";
      <td><hr color='black'></td>
     </tr>
     <tr>
-     <td><a href='enter_journalvoucher'><?echo "enter JournalVoucher"?></a></td>
+     <td><a href='enter_journalvoucher.php'><?echo "enter JournalVoucher"?></a></td>
     </tr>
     <tr>
      <td><hr color='black'></td>
