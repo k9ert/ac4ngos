@@ -12,7 +12,7 @@
 # security is only relevant for access by web (PHP)
 #
 
-use accrp;
+use ac4ngos;
 
 CREATE TABLE Users (
   UserID int(10) unsigned DEFAULT '0' NOT NULL auto_increment,

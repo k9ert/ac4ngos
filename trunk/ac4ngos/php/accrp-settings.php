@@ -23,7 +23,7 @@ $DBUSER = "crpuser";
 $DBPASSWORD = "crp";
 
 # Database for accrp to use
-$DBNAME = "accrp";
+$DBNAME = "ac4ngos";
 
 #----------------------------------------------------------------------------
 # Customization Settings
@@ -31,7 +31,7 @@ $DBNAME = "accrp";
 # Some of the color settings are in the accrp.css file
 
 # Name you want pasted all over accrp's interface, like a Company or something
-$BRAND = "accrp";
+$BRAND = "ac4ngos";
 
 # Color of the topbar where the user and brand line
 $TOPBAR = "mediumslateblue";
