@@ -16,7 +16,7 @@ beginPrettyTable("4", "Salary Elements");
 printRow(array("SAL_ID","Description","Income/Expense"));
 
 while ($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
-	printRow($row,"something");
+	printRow($row,"fluct");
 }
 endPrettyTable();
 endDocument();

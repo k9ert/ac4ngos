@@ -139,7 +139,7 @@ if ($submitnow==1) {
 	makeStaticField("expense_sum",$expense_sum, "Expense Sum:","",11);
 	printRow(array("<hr>"),"","1,2");
 	makeStaticField("total_sum",$income_sum-$expense_sum, "Total Sum:","",14);
-	makeSpecialSubmitter("submit","this.form.submitnow.value=\"1\"");
+	makeSpecialSubmitter("submit","onClick='this.form.submitnow.value=\"1\"'");
 	endPrettyTable();
 	closeForm();
 	

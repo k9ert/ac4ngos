@@ -68,7 +68,6 @@ function checkBeforeSubmit() {
 				}
 				amountFieldName = "amount_" + i;
 				amountFieldValue = parseInt(document.transaction.elements[amountFieldName].value);
-				alert(amountFieldValue);
 				if (amountFieldValue == 0 || isNaN(amountFieldValue)) {
 					alert("One Booking is zero or not a number ?");
 					return false
@@ -183,17 +182,17 @@ if ($submitnow=="1") {
 	     makePlainDropBox("ac_name_$i", $ac_array);
 	     makePlainTextField("remarks_$i", "", "", 20);
 	     makePlainDropBox("dept_$i", $dept_array);
-	     makePlainTextField("dr_cr_$i","","",2,"onChange=\"updateTotalFields()\"");
-	     makePlainTextField("amount_$i","","",6,"onChange=\"updateTotalFields()\"");
+	     makePlainTextField("dr_cr_$i","","",2,"onChange='updateTotalFields()'");
+	     makePlainTextField("amount_$i","","",6,"onChange='updateTotalFields()'");
 	    endRow();
 	  }
 	  $ac_count++;
-	  makeSpecialSubmitter("moreRows", "moreRows($ac_count)");
+	  makeSpecialSubmitter("moreRows", "onClick=\"moreRows($ac_count)\"");
 	makePlainStaticField("debit_sum", "", "Total Debit:", 10);
 	makePlainStaticField("credit_sum", "", "Total Credit:", 10);
 
 	endPrettyTable();
-	makeSpecialSubmitter("submit", "this.form.submitnow.value=\"1\"");
+	makeSpecialSubmitter("submit", "onClick='this.form.submitnow.value=\"1\"'");
 
 	closeForm();
 	

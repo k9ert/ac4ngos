@@ -29,7 +29,7 @@ if (isSet($ac_id1)) {
 	beginPrettyTable("4", "Opening Balance");
 	printRow(array("Code Number","Description","Amount"));
 	while ($openingAccounts->getNext()) {
-		printRow(array($openingAccounts->getActualCodeString(),$openingAccounts->getActualCodeName(),$openingAccounts->getActualBalance()),"abwechselnd");
+		printRow(array($openingAccounts->getActualCodeString(),$openingAccounts->getActualCodeName(),$openingAccounts->getActualBalance()),"fluct");
 	}
 	printRow(array("","Total",$openingAccounts->getSum()));
 	endPrettyTable();
@@ -40,7 +40,7 @@ if (isSet($ac_id1)) {
 	printRow(array("Code Number","Description","Amount"));
 	while ($paymentsAccounts->getNext()) {
 		if ($paymentsAccounts->getActualBalance()=="") continue;
-		printRow(array($paymentsAccounts->getActualCodeString(),$paymentsAccounts->getActualCodeName(),$paymentsAccounts->getActualBalance()),"abwechselnd");
+		printRow(array($paymentsAccounts->getActualCodeString(),$paymentsAccounts->getActualCodeName(),$paymentsAccounts->getActualBalance()),"fluct");
 	}
 	printRow(array("","Total",$paymentsAccounts->getSum()));
 	endPrettyTable();
@@ -50,7 +50,7 @@ if (isSet($ac_id1)) {
 	printRow(array("Code Number","Description","Amount"));
 	while ($receiptsAccounts->getNext()) {
 		if ($receiptsAccounts->getActualBalance()=="") continue;
-		printRow(array($receiptsAccounts->getActualCodeString(),$receiptsAccounts->getActualCodeName(),$receiptsAccounts->getActualBalance()),"abwechselnd");
+		printRow(array($receiptsAccounts->getActualCodeString(),$receiptsAccounts->getActualCodeName(),$receiptsAccounts->getActualBalance()),"fluct");
 	}
 	printRow(array("","Total",$receiptsAccounts->getSum()));
 	endPrettyTable();
@@ -59,7 +59,7 @@ if (isSet($ac_id1)) {
 	beginPrettyTable("4", "Closing Balance");
 	printRow(array("Code Number","Description","Amount"));
 	while ($closingAccounts->getNext()) {
-		printRow(array($closingAccounts->getActualCodeString(),$closingAccounts->getActualCodeName(),$closingAccounts->getActualBalance()),"abwechselnd");
+		printRow(array($closingAccounts->getActualCodeString(),$closingAccounts->getActualCodeName(),$closingAccounts->getActualBalance()),"fluct");
 	}
 	printRow(array("","Total",$closingAccounts->getSum()));
 	endPrettyTable();

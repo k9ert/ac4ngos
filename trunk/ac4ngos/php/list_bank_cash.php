@@ -19,7 +19,7 @@ if ($date) {
 		while ($row = $accounts->getNext()) {
 			printRow(array(	$row["AC5_DESC"],
 					$accounts->getActualBalance()."&nbsp;"), 
-					"irgendwas");
+					"fluct");
 		}
 		printRow(array("Sum",$accounts->getSum()));
 		endPrettyTable();

@@ -5,9 +5,20 @@ docroot=/var/www/html
 # For Debian
 #docroot=/var/www
 
+# get apache-group
+if [ -f /etc/apache/httpd.conf ]; then
+apachegroup=`egrep "^Group" /etc/apache/httpd.conf | cut -f2 -d" "`
+else
+apachegroup=www-data
+fi
+
 # Location of php.ini
-#For RedHat 9.0
+# This seems to be no longer needed. But I leave it here, perhaps I need it again
+# For RedHat 9.0
 phpini=/etc/php.ini
+
+# For Debian
+#phpini=/etc/php4/apache/php.ini
 
 echo "The application you are about to install is licensed under"
 echo "the General Public License. You have to accept this license,"
@@ -21,7 +32,7 @@ if [ $REPLY != y ]; then
 	exit 0
 fi
 
-echo "Hello, you are about to install accrp on your system"
+echo "Hello, you are about to install ac4ngos on your system"
 echo "if you do not want to do this, press CTRL-C NOW !!!"
 echo "otherwise, press enter !"
 read
@@ -31,8 +42,8 @@ if [ $roottest != root ]; then
 	exit 1
 fi
 echo "-----------WARNING--------------------------------"
-echo "If you already have a running accrp-Application,"
-echo "all YOUR ACCRP-DATA WILL GET LOST IF YOU PROCEED NOW!"
+echo "If you already have a running ac4ngos-Application,"
+echo "all YOUR AC4NGOS-DATA WILL GET LOST IF YOU PROCEED NOW!"
 echo "PRESS CTRL-C TO ABORT"
 echo "PRESS ENTER TO PROCEED"
 read
@@ -42,8 +53,8 @@ echo "Step 1 is creating all Tables etc ..."
 echo "====================================="
 
 cd sql
-./remove_accrp
-./create_accrp || exit 1
+./remove_ac4ngos
+./create_ac4ngos || exit 1
 cd ..
 echo "Everything seems to be fine up to now"
 
@@ -58,17 +69,10 @@ read
 echo -n "Copying ... "
 cp -r php $docroot || exit 1
 mv $docroot/php $docroot/crp || exit 1
+chown root:$apachegroup $docroot/php/backups
+echo There have to be a Permission-change on the directory "backup"
+
 echo -n "done"
-echo "  "
-
-echo "Step 3 is copying the php.ini-File to the appropriate place"
-echo "==========================================================="
-
-echo "On RedHat 9.0 it is $phpini"
-echo " If you do not want, to overwrite your php.ini, press CTRL-C now !!!!
-read
-echo "If you can't get a login, maybe you have to copy this File somewhere else!"
-cp sql/php.ini $phpini || exit 1
 
 echo "Installation is finished. Login at:"
 echo "http://localhost/crp or, if this not works at"

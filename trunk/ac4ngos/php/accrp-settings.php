@@ -40,7 +40,7 @@ if($DBHOST=="mysql.sourceforge.net")
 #----------------------------------------------------------------------------
 # Some of the color settings are in the accrp.css file
 
-# Name you want pasted all over accrp's interface, like a Company or something
+# Name you want pasted all over ac4ngos interface, like a Company or something
 $BRAND = "ac4ngos";
 
 # Color of the topbar where the user and brand line

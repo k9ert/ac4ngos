@@ -37,7 +37,7 @@ while ($row = mysql_fetch_array($result)) {
 	$inst_sum += $rest_inst_no;
 	$rest_amount_sum += $rest_amount;
 	$loan_amount_sum += $row["LOAN_AMT"];
-	printRow(array($row["EMP_ID3"],$name,conv_to_hrd($row["LOAN_START"]),conv_to_hrd($row["LOAN_END"]),$row["LOAN_AMT"],$row["INT_RATE"],$row["TOT_AMT"],$rest_inst_no,$rest_amount),"something");
+	printRow(array($row["EMP_ID3"],$name,conv_to_hrd($row["LOAN_START"]),conv_to_hrd($row["LOAN_END"]),$row["LOAN_AMT"],$row["INT_RATE"],$row["TOT_AMT"],$rest_inst_no,$rest_amount),"fluct");
 }
 printRow(array("","","Loan-Amt-Sum: ",$loan_amount_sum),"","3,2");
 printRow(array("","","Inst-Sum: ","",$inst_sum),"","3,2");

@@ -17,6 +17,7 @@ if (!isset($orderby)) $orderby="EMP_ID3";
 $result = mysql_query("select SUM(AMOUNT),AC_ID5 from TRANS WHERE AC_ID3=30 AND DR_CR='C' GROUP BY AC_ID5 order by PARTY", $db);
 checkMySQLError();
 
+$receive_array=array();
 while($row = mysql_fetch_array($result)) {
 	$receive_array[$row["AC_ID5"]] = $row["SUM(AMOUNT)"];
 }
@@ -35,7 +36,7 @@ if (isSet($receive_array)) {
 	printRow(array("Code","Employer's name", "Amount"));
 	foreach ($receive_array as $key => $value) {
 		if ($value!=0)
-			printRow(array("$key", get_ac5_desc_of($key), 0-$value),"something");
+			printRow(array("$key", get_ac5_desc_of($key), 0-$value),"fluct");
 		$sum += 0-$value;
 	}
 	printRow(array("","Sum",$sum));

@@ -30,7 +30,7 @@ if ($ac_name) {
 		}
 		else
 			$row["DR_CR"]="&nbsp;";
-		printRow($row,"abwechselnd");
+		printRow($row,"fluct");
 	}
 	printRow(array("","","DebitSum:",get_debit_sum("AC_ID5=$ac_name",$enddate_srd,$startdate_srd)),"","1,2");
 	printRow(array("","","CreditSum:",get_credit_sum("AC_ID5=$ac_name",$enddate_srd,$startdate_srd)),"","1,3");

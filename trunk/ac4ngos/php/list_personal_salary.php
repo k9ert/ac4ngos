@@ -1,5 +1,5 @@
 <?
-# List all Employees
+# List all Employees-salary
 
 require("accrp.php");
 session_start();
@@ -22,34 +22,40 @@ beginPrettyTable("5", "PERSONAL SALARY");
 $query = "select * FROM PERSONAL LEFT JOIN EMP_SAL USING (EMP_ID3) ORDER BY EMP_SAL.EMP_ID3, EMP_SAL.SAL_ID";
 $result = mysql_query($query, $db);
 
+$printrow = array();
+
 while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	if (!(isSet($emp_name))) 
 		$emp_name=$row["EMP_NAME"];	
 		
 	
 	# ToDo: should get treated as well
-	if ($row["SAL_ID"]==NULL) {
-		continue;
-		for ($i=0;$i<14;$i++) $printrow[]="0";
-		continue;
-	}
+	#if ($row["SAL_ID"]==NULL) {
+	#	#continue;
+	#	for ($i=0;$i<14;$i++) $printrow[]="0";
+	#	printRow($printrow);
+	#	reset($sal_el_array);
+	#	unSet($printrow);
+	#			
+	#	continue;
+	#}
 
-	if (!(isSet($emp_name))) 
-		$emp_name=$row["EMP_NAME"];
+	#if (!(isSet($emp_name))) 
+	#	$emp_name=$row["EMP_NAME"];
 
 
 	if (isSet($emp_name) && $row["EMP_NAME"] != $emp_name) {
 		$emp_name = $row["EMP_NAME"];
-		printRow(array("counter ist $counter"));
+		#printRow(array("counter ist $counter und name ist $emp_name"));
 		$counter = 0;
-		for ($i=1;$i<=$sal_el_count;$i++) {
-			if (!isSet($printrow["$i"])) {
-				$printrow["$i"] = "0";
-				printRow(array("Bei Counter $i leer!", "gefüllt mit",$printrow["$i"]));
-				if (!isSet($printrow["$i"]))
-					printRow(array("Warum?"));
-			}
-		}
+		#for ($i=1;$i<=$sal_el_count;$i++) {
+		#	if (!isSet($printrow["$i"])) {
+		#		$printrow["$i"] = "0";
+		#		printRow(array("Bei Counter $i leer!", "gefüllt mit",$printrow["$i"]));
+		#		if (!isSet($printrow["$i"]))
+		#			printRow(array("Warum?"));
+		#	}
+		#}
 		printRow($printrow); 
 		reset($sal_el_array); 
 		unSet($printrow);
@@ -76,9 +82,9 @@ while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	#next($sal_el_array);
 	$printrow[$row["SAL_ID"]] = $row["SAL_AMT"];
 }
+printRow($printrow);
 
 endPrettyTable();
-endBorderedTable();
 
 
 endDocument();
