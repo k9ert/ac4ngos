@@ -10,7 +10,7 @@ beginDocument($lCustomerProfile, $sess_user);
 $db = getDBConnection();
 
 $desig_array = get_designation_array();
-if (!isset($orderby)) $orderby="EMP_ID3";
+if (!isSet($orderby)) $orderby="EMP_ID3";
 $result = mysql_query("select * from PERSONAL order by $orderby", $db);
 checkMySQLError();
 beginPrettyTable("5", "PERSONAL");
