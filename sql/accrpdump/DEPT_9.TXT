@@ -24,5 +24,3 @@
 024	Guest house	
 025	CBR	
 026	Certificate In. Education	
-027	The Motivation Team	
-028	The Bird	
