@@ -3,8 +3,8 @@ use mysql;
 REPLACE INTO user ( host, user, password,  file_priv)
     VALUES (
         'localhost',
-	'crpuser',
-	password('crp'),
+	'ac4ngos',
+	password('accrp'),
 	'y'
 );
 
@@ -12,7 +12,7 @@ REPLACE INTO db ( host, db, user, select_priv, insert_priv, update_priv,delete_p
 	VALUES (
 		'localhost',
 		'ac4ngos',
-		'crpuser',
+		'ac4ngos',
 		'Y', 'Y', 'Y', 'Y','Y', 'Y'
 );
 

@@ -1,11 +1,13 @@
 <?
 # lists all transactions on a specific Account 
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
 
-beginDocument("list Ledger Sheet", $sess_user);
+pt_register('POST','ac_id1','startdate','enddate');
+
+beginDocument("list Project Transactions", $sess_user);
 
 if (isSet($ac_id1)) {
 	print_project_transactions_head($ac_id1,$startdate,$enddate,$ac_name);

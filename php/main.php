@@ -1,8 +1,9 @@
 <?
+require("accrp.php");
 session_start();
 
-require("accrp.php");
 require("security/secure.php");
+
 
 beginDocument("Main", $sess_user);
 

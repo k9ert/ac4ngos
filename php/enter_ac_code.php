@@ -1,11 +1,11 @@
 <?
 # Enter customer displays a form that allows the entry of a customer, and 
 # handles the submission
-session_start();
-
 require("accrp.php");
+session_start();
 require("security/secure.php");
 
+pt_register('POST','ac','ac_desc');
 beginDocument($lEnterCustomer, $sess_user);
 
 if ($ac_desc) {

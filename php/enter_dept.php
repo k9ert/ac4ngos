@@ -2,25 +2,15 @@
 # enter_dept.php displays a form that allows the entry of a department and
 # handles the submission
 
-
-# I don't know what this is doing.
-# I've copied it from the origin Project
-session_start();
-
-# see page 218 of "beginning PHP". Nearly the same than include(...)
-# (I don't know the difference between require and include)
 require("accrp.php");
+session_start();
 require("security/secure.php");
 
-# Prints all that HTML-stuff, we don't want to deal with
+pt_register('POST','dept_name');
+
 beginDocument("Enter Department", $sess_user);
 
-# This PHP-File (and nearly all the others) have two parts. One is showing
-# the Form, the other one is doing database-stuff with the data, typed
-# in the form
-
-
-if ($dept_name) { # means nearly the same than "if user already typed in data"
+if ($dept_name) { 
 	# get a connection to the database
 	$db = getDBConnection();
 	# insert the new department

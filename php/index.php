@@ -1,23 +1,27 @@
 <?
-session_start();
+
 
 require("accrp.php");
 
-if($username != "") {
+session_start();
+
+pt_register('POST','Username','password');
+
+if($Username != "") {
 	$db = getDBConnection();
-	$bleh = (int) $username;
+	$bleh = (int) $Username;
 	if($bleh == 0) {
-		$user_result = mysql_query("SELECT * FROM Users where Username='$username'", $db);
+		$user_result = mysql_query("SELECT * FROM Users where Username='$Username'", $db);
 	} else {
-		$user_result = mysql_query("SELECT * FROM Customers where CustomerID=$username", $db);
+		$user_result = mysql_query("SELECT * FROM Customers where CustomerID=$Username", $db);
 		$customer = 1;
 	}
 	checkMySQLError();
 	$user_row = mysql_fetch_array($user_result);
 	if(($user_row["Password"] == $password) and (mysql_num_rows($user_result)) and ($password != "")) {
 		session_start();
-		$sess_user = $username;
-		$sess_customer = $username;
+		$sess_user = $Username;
+		$sess_customer = $Username;
 		$sess_lang = $user_row["Language"];
 		$sess_name = $user_row["RealName"];
 		$sess_admin = $user_row["Admin"];
@@ -54,7 +58,7 @@ session_destroy();
 <? beginPrettyTable("2", $lLogin); ?>
 <tr>
  <td>Username:</td>
- <td><input type='text' name='username' value=''></td>
+ <td><input type='text' name='Username' value=''></td>
 </tr>
 <tr>
  <td>Password:</td>

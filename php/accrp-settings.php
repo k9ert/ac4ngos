@@ -17,13 +17,22 @@ $PERSISTENT = "On";
 $DBHOST = "localhost";
 
 # Database User
-$DBUSER = "crpuser";
+$DBUSER = "ac4ngos";
 
 # Database Password
-$DBPASSWORD = "crp";
+$DBPASSWORD = "accrp";
 
 # Database for accrp to use
 $DBNAME = "ac4ngos";
+
+#----------------------------------------------------------------------------
+# Misc Settings
+#----------------------------------------------------------------------------
+
+# The Path, where sessions get stored
+# For sourceforge
+$SESSION_PATH = "/home/groups/a/ac/ac4ngos/sessions";
+
 
 #----------------------------------------------------------------------------
 # Customization Settings

@@ -1,10 +1,13 @@
 <?
 # enter_pf_loan.php displays a form that allows the entry of a PF-Loan and
 # handles the submission
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
+
+pt_register('POST','emp_id3','type','loan_dt','loan_start','inst_no','loan_end','interest_rate');
+pt_register('POST','loan_amt','int_amt','int_rate','tot_amt');
 
 # We want to make some fields to be autocalculated. This has to be done in Javascript
 

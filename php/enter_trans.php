@@ -1,11 +1,14 @@
 <?
 # enter_personal.php displays a form that allows the entry of a personal and
 # handles the submission
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
 
+pt_register('POST','ac_count','submitnow','vr_tp','ac_name','t_dt','dr_cr','amount','vr_no');
+pt_register('POST','vr_dt','party','chq_no','remarks');
+#TODO the Counterbookings-variables have to get access via the $_POST-Array
 
 $javascript= <<<EOD
 <script type="text/javascript">
@@ -33,14 +36,14 @@ if ($submitnow=="1") {
 	$t_dt = get_today_srd_string();
 	# First, we have to check, if everything is fine
 	$sum=0;
-	for ($i=0, $varname2= "ac_name_" . $i; isset($$varname2); $i++,$varname2= "ac_name_" . $i ) {
+	for ($i=0, $varname2= "ac_name_" . $i; isset($_POST[$$varname2]); $i++,$varname2= "ac_name_" . $i ) {
 		$varname = "ac_name_" . $i;
-		$ac_name_temp = $$varname;
+		$ac_name_temp = $_POST[$$varname];
 		# 1. We need at least one "counter-booking"
 		if ($ac_name_temp!=-1) $proceed_flag=1;
 		# sum it up
 		$varname = "amount_" . $i;
-		$amount_temp = $$varname;
+		$amount_temp = $_POST[$$varname];
 		# 2. sum of "counter-bookings" should be same as amount
 		$sum+=$amount_temp;
 		# 3. If a Amount is given, an Account must be chosen also
@@ -79,23 +82,23 @@ if ($submitnow=="1") {
 		$dr_cr = "C"; 
 	else 
 		die("DR_CR unknown: $dr_cr");
-	for ($i=0, $varname2= "ac_name_" . $i; isset($$varname2); $i++,$varname2= "ac_name_" . $i ) {
+	for ($i=0, $varname2= "ac_name_" . $i; isset($_POST[$$varname2]); $i++,$varname2= "ac_name_" . $i ) {
 		# We have to insert a row for each group of fields
 		# We have to use variable Variables
 		$varname = "ac_name_" . $i;
-		$ac_name = $$varname; # the content of varname is used as a Variablename
+		$ac_name = $_POST[$$varname]; # the content of varname is used as a Variablename
 		if ($ac_name == -1) continue;
 		$ac_id1=$ac5_array[$ac_name][1];
 		$ac_id2=$ac5_array[$ac_name][2];
 		$ac_id3=$ac5_array[$ac_name][3];
 		$ac_id4=$ac5_array[$ac_name][4];
 		$varname = "remarks_" . $i;
-		$remarks = $$varname;
+		$remarks = $_POST[$$varname];
 		$varname = "dept_" . $i;
-		$dept = $$varname;
+		$dept = $POST[$$varname];
 		if ($dept==-1) $dept="";
 		$varname = "amount_" . $i;
-		$amount = $$varname;
+		$amount = $_POST[$$varname];
 		# Would that not be much more easier ? You can make sums very easily ?!
 		# Because I don't know about all the implications, I let it like that
 		# $amount = -$amount;
@@ -146,7 +149,6 @@ if ($submitnow=="1") {
 	openForm("transaction", $PHP_SELF);
 	beginPrettyTable("2", "enter $type_of_voucher Voucher");
 	  makeHiddenField("ac_count", "$ac_count");
-	  makeHiddenField("crpemp", $crpemp);
 	  makeHiddenField("submitnow","");
 	  makeHiddenField("vr_tp",$vr_tp);
 	  makePlainDropBox("ac_name", $ac_array, "Ac_Name");
@@ -167,7 +169,6 @@ if ($submitnow=="1") {
 	  #else
 	  
 	  makePlainTextField("party", "", $dr_cr=="C" ? "Paid To" : "Rcvd. from");
-	  #makeSpecialSubmitter("CRP-Employee", "this.form.crpemp.value=\"1\"");
 	  if ($vr_tp!="JV")
 	  	makePlainTextField("chq_no", "", "Chq-No.:",10);
 	  makeTextField("remarks", "", "Narration:");

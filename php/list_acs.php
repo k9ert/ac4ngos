@@ -1,9 +1,9 @@
 <?
 # Show Profile shows all the Customer Info, Invoices, Payments, Tickets,
 # and a balance.
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
 
 beginDocument($lCustomerProfile, $sess_user);

@@ -1,10 +1,11 @@
 <?
 # enter_desig.php displays a form that allows the entry of a designation and
 # handles the submission
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
+pt_register('POST','desig_desc');
 
 beginDocument("Enter Designation", $sess_user);
 

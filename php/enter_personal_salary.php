@@ -4,7 +4,11 @@
 session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
+
+pt_register('POST','emp_id3','submitnow','emp_name','desig_desc');
+
 $javascript= <<<EOD
 <script type="text/javascript">
 <!--

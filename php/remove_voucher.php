@@ -1,10 +1,12 @@
 <?
 # enter_salary_element.php displays a form that allows the entry of a new salary element and
 # handles the submission
-session_start();
 
 require("accrp.php");
+session_start();
 require("security/secure.php");
+
+pt_register('POST','remove_confirm','vr_no');
 
 beginDocument("Enter Salary Element", $sess_user);
 
