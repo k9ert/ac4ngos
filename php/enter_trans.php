@@ -36,14 +36,15 @@ if ($submitnow=="1") {
 	$t_dt = get_today_srd_string();
 	# First, we have to check, if everything is fine
 	$sum=0;
-	for ($i=0, $varname2= "ac_name_" . $i; isset($_POST[$$varname2]); $i++,$varname2= "ac_name_" . $i ) {
+	for ($i=0, $varname2= "ac_name_" . $i; isSet($_POST[$varname2]); $i++,$varname2= "ac_name_" . $i ) {
 		$varname = "ac_name_" . $i;
-		$ac_name_temp = $_POST[$$varname];
+		$ac_name_temp = $_POST[$varname];
+		printrow(array("ac_name_temp is $ac_name_temp"));
 		# 1. We need at least one "counter-booking"
 		if ($ac_name_temp!=-1) $proceed_flag=1;
 		# sum it up
 		$varname = "amount_" . $i;
-		$amount_temp = $_POST[$$varname];
+		$amount_temp = $_POST[$varname];
 		# 2. sum of "counter-bookings" should be same as amount
 		$sum+=$amount_temp;
 		# 3. If a Amount is given, an Account must be chosen also
@@ -82,23 +83,23 @@ if ($submitnow=="1") {
 		$dr_cr = "C"; 
 	else 
 		die("DR_CR unknown: $dr_cr");
-	for ($i=0, $varname2= "ac_name_" . $i; isset($_POST[$$varname2]); $i++,$varname2= "ac_name_" . $i ) {
+	for ($i=0, $varname2= "ac_name_" . $i; isset($_POST[$varname2]); $i++,$varname2= "ac_name_" . $i ) {
 		# We have to insert a row for each group of fields
-		# We have to use variable Variables
+		# We can use the $_POST-Array for that
 		$varname = "ac_name_" . $i;
-		$ac_name = $_POST[$$varname]; # the content of varname is used as a Variablename
+		$ac_name = $_POST[$varname]; 
 		if ($ac_name == -1) continue;
 		$ac_id1=$ac5_array[$ac_name][1];
 		$ac_id2=$ac5_array[$ac_name][2];
 		$ac_id3=$ac5_array[$ac_name][3];
 		$ac_id4=$ac5_array[$ac_name][4];
 		$varname = "remarks_" . $i;
-		$remarks = $_POST[$$varname];
+		$remarks = $_POST[$varname];
 		$varname = "dept_" . $i;
-		$dept = $POST[$$varname];
+		$dept = $POST[$varname];
 		if ($dept==-1) $dept="";
 		$varname = "amount_" . $i;
-		$amount = $_POST[$$varname];
+		$amount = $_POST[$varname];
 		# Would that not be much more easier ? You can make sums very easily ?!
 		# Because I don't know about all the implications, I let it like that
 		# $amount = -$amount;

@@ -8,7 +8,8 @@ if(!(extension_loaded("mysql"))) {
 	die ("MySQL support not enabled, <b>gcdb</b> cannot run.");
 }
 
-session_save_path($SESSION_PATH);
+if(isSet($SESSION_PATH))
+	session_save_path($SESSION_PATH);
 
 ###############################################################################
 # DB FUNCTIONS
