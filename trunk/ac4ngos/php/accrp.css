@@ -1,0 +1,45 @@
+A {
+	COLOR: black;
+	FONT-WEIGHT: bold;
+}
+A.light {
+	COLOR: white;
+	FONT-WEIGHT: bold;
+}
+A.mailto {
+	COLOR: white;
+	FONT-WEIGHT: normal;
+}
+BODY {
+	FONT-FAMILY: Arial, Helvetica, Geneva;
+}
+TR.odd {
+	BACKGROUND-COLOR: #AAAAFF;
+}
+TR.even {
+	BACKGROUND-COLOR: #CCCCFF;
+}
+TD.header {
+	FONT-WEIGHT: bold;
+	COLOR: white;
+}
+DIV.positive {
+	FONT-WEIGHT: bold;
+	COLOR: white;
+}
+DIV.negative {
+	FONT-WEIGHT: bold;
+	COLOR: red;
+}
+DIV.header {
+	COLOR: white;
+	FONT-WEIGHT: bold;
+}
+DIV.data {
+	COLOR: white;
+}
+INPUT, TEXTAREA, SELECT {
+	BORDER: solid 1px black;
+	BACKGROUND-COLOR: #FFFFFF;
+	FONT-FAMILY: Arial, Helvetica, Geneva;
+}

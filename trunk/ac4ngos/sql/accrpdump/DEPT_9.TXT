@@ -1,0 +1,28 @@
+001	Administration	0
+002	Ward	0
+003	Social Welfare	0
+004	X-ray	0
+005	Pathology	0
+006	Operation Theatre	0
+007	Physiotherapy	0
+008	Occupational Therapy	0
+009	Engineering	0
+010	Rehabilitation Nursing Course	
+011	OT&PT Training	
+012	Special Needs School	
+013	Rehabilitation Worker	
+014	Library	
+015	CDCC	
+016	Metal Workshop	
+017	Wood Workshop	
+018	Nursery	
+019	Poultry	
+020	Fish Project	
+021	Vocational Training	
+022	Canteen	
+023	CP Clinic	
+024	Guest house	
+025	CBR	
+026	Certificate In. Education	
+027	The Motivation Team	
+028	The Bird	

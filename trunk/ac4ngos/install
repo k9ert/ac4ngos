@@ -1,0 +1,77 @@
+#!/bin/bash
+clear
+# For RedHat 9.0
+docroot=/var/www/html
+# For Debian
+#docroot=/var/www
+
+# Location of php.ini
+#For RedHat 9.0
+phpini=/etc/php.ini
+
+echo "The application you are about to install is licensed under"
+echo "the General Public License. You have to accept this license,"
+echo "if you want to use this application."
+echo "to read the license-agreement, press CTRL-C and type \"less GPL.txt\""
+echo " "
+echo "press y to accept this license"
+read 
+if [ $REPLY != y ]; then
+	echo "good bye ..."
+	exit 0
+fi
+
+echo "Hello, you are about to install accrp on your system"
+echo "if you do not want to do this, press CTRL-C NOW !!!"
+echo "otherwise, press enter !"
+read
+roottest=`whoami`
+if [ $roottest != root ]; then
+	echo "You have to be root to run this installation procedure !"
+	exit 1
+fi
+echo "-----------WARNING--------------------------------"
+echo "If you already have a running accrp-Application,"
+echo "all YOUR ACCRP-DATA WILL GET LOST IF YOU PROCEED NOW!"
+echo "PRESS CTRL-C TO ABORT"
+echo "PRESS ENTER TO PROCEED"
+read
+echo " "
+
+echo "Step 1 is creating all Tables etc ..."
+echo "====================================="
+
+cd sql
+./remove_accrp
+./create_accrp || exit 1
+cd ..
+echo "Everything seems to be fine up to now"
+
+echo "Step 2 is copying all necessary files to the Document-Root of your Webserver"
+echo "============================================================================"
+
+echo "Now I will copy all the needed Application files to the Document-Root"
+echo "I guess, that the Document-Root is at $docroot"
+echo "if not, press CTRL-C and change this script!"
+echo "otherwise, press enter!"
+read
+echo -n "Copying ... "
+cp -r php $docroot || exit 1
+mv $docroot/php $docroot/crp || exit 1
+echo -n "done"
+echo "  "
+
+echo "Step 3 is copying the php.ini-File to the appropriate place"
+echo "==========================================================="
+
+echo "On RedHat 9.0 it is $phpini"
+echo " If you do not want, to overwrite your php.ini, press CTRL-C now !!!!
+read
+echo "If you can't get a login, maybe you have to copy this File somewhere else!"
+cp sql/php.ini $phpini || exit 1
+
+echo "Installation is finished. Login at:"
+echo "http://localhost/crp or, if this not works at"
+echo "http://127.0.0.1/crp"
+echo "Username is \"test\", Password is \"test\" as well."
+

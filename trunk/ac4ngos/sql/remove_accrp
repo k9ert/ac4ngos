@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "drop database accrp;" | mysql -u root
+echo "use mysql; delete from user where user=\"crpuser\";" | mysql -u root
+echo "use mysql; delete from db where user= \"crpuser\";" | mysql -u root
+
