@@ -1,3 +1,6 @@
+to test ac4ngos, surf to the subdirectory php or copy this link to your browser:
+http://ac4ngos.sf.net/php
+Login is "test", password is "test".
 
 Readme-file for the ac4ngos Application
 =======================================
