@@ -39,7 +39,7 @@ echo "<b>&nbsp;&nbsp;accrp $version</b>\n";
      <td><hr color='black'></td>
     </tr>
     <tr>
-     <td><a href='list_project_transactions'>Project Transactions</a></td>
+     <td><a href='list_project_transactions.php'>Project Transactions</a></td>
     </tr>
     <tr>
      <td><hr color='black'></td>
