@@ -18,20 +18,20 @@
 . ac4ngos_sql-settings
 if [ $USER = "root" ]; then
 	echo -n creating accrp-database ... 
-	mysql -u $USER --host=$HOST $PASS < create_accrp_db.sql || exit
+	mysql -u$USER --host=$HOST $PASS < create_accrp_db.sql || exit
 	echo done
 	echo -n reloading mysql-database ... 
-	mysqladmin -u $USER --host=$HOST reload || exit
+	mysqladmin -u$USER --host=$HOST $PASS reload || exit
 	echo done
 fi
 echo -n creating table-structure ... 
-mysql -u $USER --host=$HOST --database=ac4ngos $PASS < create_accrp_tables.sql || exit
+mysql -u$USER --host=$HOST --database=ac4ngos $PASS < create_accrp_tables.sql || exit
 echo done
 echo -n "creating security System (for PHP access) ..."
-mysql -u $USER --host=$HOST --database=ac4ngos $PASS < create_accrp_phpsecurity.sql || exit
+mysql -u$USER --host=$HOST --database=ac4ngos $PASS < create_accrp_phpsecurity.sql || exit
 echo done
 echo -n Creating some initial Data ... 
-mysql -u $USER --host=$HOST --database=ac4ngos $PASS < create_initial_data.sql || exit
+mysql -u$USER --host=$HOST --database=ac4ngos $PASS < create_initial_data.sql || exit
 echo done
 
 echo "Altering AC_CODE5 Table?(y/n): $REPLY "
@@ -69,7 +69,7 @@ read
 echo "ok: $REPLY "
 if [ $REPLY = y ]; then
 	echo -n Loading Datadump into database ...
-	mysql -u $USER --host=$HOST --database=ac4ngos $PASS < load_accrp_datadump.sql || exit
+	mysql -u$USER --host=$HOST --database=ac4ngos $PASS < load_accrp_datadump.sql || exit
 	echo done
 fi
 

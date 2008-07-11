@@ -4,6 +4,6 @@ HOST=localhost
 
 USER=root
 
-#PASS="--password="
+PASS="--password=postwe"
 
 
