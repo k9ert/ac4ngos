@@ -15,7 +15,7 @@
 use ac4ngos;
 
 CREATE TABLE Users (
-  UserID int(10) unsigned DEFAULT 0 NOT NULL auto_increment,
+  UserID int(10) unsigned NOT NULL auto_increment,
   Username varchar(50),
   Password varchar(50),
   RealName varchar(100),
