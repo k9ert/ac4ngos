@@ -32,7 +32,7 @@ $DBNAME = "ac4ngos";
 # The Path, where sessions get stored
 # Adjusting only for sourceforge
 if($DBHOST=="mysql.sourceforge.net")
-	$SESSION_PATH = "/home/groups/a/ac/ac4ngos/sessions";
+	$SESSION_PATH = "/tmp/persistent/ac4ngos";
 
 
 #----------------------------------------------------------------------------
